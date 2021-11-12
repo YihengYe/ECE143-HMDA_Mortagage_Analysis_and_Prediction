@@ -10,7 +10,7 @@ This is the project made by ECE 143 Group 12 to analyze and predict HMDA Mortage
 - Yanzhi Yao, yayao@ucsd.edu
 
 ### Requirements:
-- python 3.8
+- python 3.9
 - pandas 1.3.4
 - numpy 1.21.4
 
