@@ -133,3 +133,6 @@ dmypy.json
 
 #data files
 data/
+
+#ignore result
+result/
