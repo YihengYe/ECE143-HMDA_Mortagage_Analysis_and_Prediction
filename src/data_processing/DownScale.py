@@ -27,7 +27,7 @@ def DownScale(data_path, parent_path):
     """
     record=parent_path+"/"+data_path
     df=pd.read_csv(record, low_memory=False)
-    simpDF=df[df['action_taken'].isin([1,3,7])]
+    simpDF=df[df['action_taken'].isin([1,3,7,2,8])]
     removedDF=simpDF.drop(columns=[x for x in df.columns if "name" in x])
     removedDF.to_csv(parent_path+"/data/csvs/hmda_2017_ca_noname.csv", index=False)
     print('Save the updated data set with coded only and decisions of approve/denial to', "/data/csvs/hmda_2017_ca_noname.csv")
