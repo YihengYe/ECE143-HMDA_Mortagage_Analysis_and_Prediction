@@ -133,3 +133,6 @@ dmypy.json
 
 #data files
 data/
+
+#DS_store
+.DS_Store
