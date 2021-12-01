@@ -14,10 +14,13 @@ def get_parent_path():
 
     :return: the root parent path
     """
-    allDir = os.getcwd().split('\\')
+    if '/' in os.getcwd():
+        allDir=os.getcwd().split('/')
+    else:
+        allDir=os.getcwd().split('\\')
     for i in range(len(allDir)):
         if allDir[i] in ['src', 'notebooks']:
-            result = os.getcwd()[:-(sum(map(len, allDir[i:])) + 1 * (len(allDir) - i))]
+            result=os.getcwd()[:-(sum(map(len,allDir[i:]))+1*(len(allDir)-i))]
             return result
     return os.getcwd()
 
