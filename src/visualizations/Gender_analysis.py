@@ -13,7 +13,7 @@ def get_parent_path():
 
     :return: the root parent path
     """
-    if '/' in str(os.getcwd()):
+    if '/' in os.getcwd():
         allDir=os.getcwd().split('/')
     else:
         allDir=os.getcwd().split('\\')
