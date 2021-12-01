@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import json
 
 """
-Generating visualization for Ethnicity in the data set
+Generating visualization for Race in the data set
 """
 
 
@@ -42,7 +42,7 @@ def Race_coding(code_map):
     Shorten the original name for code 4 to "Information not provided by applicant"
 
     :param code_map: the originial code map
-    :return: The updated Ethnicity code map
+    :return: The updated Race code map
     """
     RaceMap = code_map['race'].copy()
     RaceMap[6] = 'Unknown'
@@ -52,10 +52,10 @@ def Race_coding(code_map):
 
 def Generate_Race_Plots(df, genderMap, parent_path, image_path):
     """
-    Generate Ethnicity Analysis Plots
+    Generate Race Analysis Plots
 
     :param df: the skimmed data set
-    :param genderMap: the Ethnicity code map
+    :param genderMap: the Race code map
     :param parent_path: root parent path
     :param image_path: the image path
     """
@@ -121,7 +121,7 @@ def Co_vs_Non_co_race(skimmed_df, RaceMap, image_path):
     Analysis for applications with co-applicants vs those without co-applicants
 
     :param skimmed_df: Downscaled data set
-    :param genderMap: code map for Ethnicity
+    :param genderMap: code map for Race
     :param image_path: output path for result graphs
     """
     if not os.path.exists(image_path):
@@ -236,59 +236,6 @@ def Co_vs_Non_co_race(skimmed_df, RaceMap, image_path):
     return
 
 
-# def pair_analysis(skimmed_df, image_path):
-#     """
-#     Analysis for Applicant-Co applicant pairs
-#
-#     :param skimmed_df: original data frame
-#     :param image_path: image output path
-#     """
-#     Coappli = skimmed_df[skimmed_df['co_applicant_ethnicity'] != 5]
-#     Cover = Coappli.copy()
-#     Cover['Pair_Ethnicity'] = Cover['applicant_ethnicity'].astype(str) + Cover['co_applicant_ethnicity'].astype(str)
-#     PairDict = {'11': "Main:Hispanic or Latino,Co:Hispanic or Latino",
-#                 '12': 'Main:Hispanic or Latino,Co:Not Hispanic or Latino', '13': 'Main:Hispanic or Latino,Co:Unknown',
-#                 '14': 'Main:Hispanic or Latino,Co:Unknown',
-#                 '21': "Main:Not Hispanic or Latino,Co:Hispanic or Latino",
-#                 '22': 'Main:Not Hispanic or Latino,Co:Not Hispanic or Latino',
-#                 '23': 'Main:Not Hispanic or Latino,Co:Unknown', '24': 'Main:Not Hispanic or Latino,Co:Unknown',
-#                 '31': "Main:Unknown,Co:Hispanic or Latino", '32': 'Main:Unknown,Co:Hispanic or Latino',
-#                 '33': 'Main:Unknown,Co:Unknown', '34': 'Main:Unknown,Co:Unknown',
-#                 '41': "Main:Unknown,Co:Hispanic or Latino", '42': 'Main:Unknown,Co:Hispanic or Latino',
-#                 '43': 'Main:Unknown,Co:Unknown', '44': 'Main:Unknown,Co:Unknown'}
-#
-#
-#     Ethnicity_result_pair = Cover[['Pair_Ethnicity', 'action_taken']]
-#     RecodeAction = {1: "Institution approved", 2: "Institution approved", 3: 'Institution denied',
-#                     7: 'Institution denied', 8: 'Institution approved'}
-#     Ethnicity_result_b_pair = pd.DataFrame()
-#     Ethnicity_result_b_pair['action'] = Ethnicity_result_pair['action_taken'].replace(RecodeAction)
-#     Ethnicity_result_b_pair['Pair_Ethnicity'] = Ethnicity_result_pair['Pair_Ethnicity'].replace(PairDict)
-#     Ethnicity_result_a1_pair = Ethnicity_result_b_pair.pivot_table(index='Pair_Ethnicity', columns='action',
-#                                                                    aggfunc='size', fill_value=0)
-#     plt.figure()
-#     Ethnicity_result_a1_pair.plot.bar(title='Application Result Counts vs Pair_Ethnicity')
-#     plt.ylabel('count')
-#     plt.xticks(rotation=45, ha='right')
-#     plt.savefig(image_path + 'Application_result_count_Pair_Ethnicity.png', bbox_inches='tight')
-#     plt.close()
-#
-#     totalSA1_pair = Ethnicity_result_a1_pair.sum(axis=1)
-#     Ethnicity_result_a2_pair = Ethnicity_result_a1_pair.T
-#     temp = Ethnicity_result_a2_pair / totalSA1_pair.values
-#     Ethnicity_result_a2_pair = temp.T * 100
-#     plt.figure()
-#     SA2B_pair = Ethnicity_result_a2_pair.plot.bar(title='Application Result Precentage vs Ethnicity Pairs')
-#     for p in SA2B_pair.patches:
-#         SA2B_pair.annotate(str("%.2f" % p.get_height()) + '%', xy=(p.get_x(), p.get_height() * 1.01))
-#     plt.xticks(rotation=45, ha='right')
-#     plt.ylabel('percentage')
-#     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-#     plt.savefig(image_path + 'Application_result_percentage_Ethnicity_pair.png', bbox_inches='tight')
-#     plt.close()
-#     return
-
-
 if __name__ == "__main__":
     # preparation
     parent = get_parent_path()
@@ -305,8 +252,8 @@ if __name__ == "__main__":
 
     # Generating Analysis Plots
     Generate_Race_Plots(skimmed_df, RaceMap, parent, image_path)
-    print('Finished Generating Ethnicity Analysis Plots For All applicant')
+    print('Finished Generating Race Analysis Plots For All applicant')
     Co_vs_Non_co_race(skimmed_df, RaceMap, image_path)
-    print('Finished Generating Ethnicity Analysis plots For co-applicant condition analysis')
+    print('Finished Generating Race Analysis plots For co-applicant condition analysis')
     # pair_analysis(skimmed_df, image_path)
-    # print('Finished Generating Ethnicity Analysis plots For Applicant Pairs analysis')
+    # print('Finished Generating Race Analysis plots For Applicant Pairs analysis')
