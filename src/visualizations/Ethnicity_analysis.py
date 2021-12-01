@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import json
 
 """
-Generating visualization for Gender in the data set
+Generating visualization for Ethnicity in the data set
 """
 
 
@@ -42,7 +42,7 @@ def Ethnicity_coding(code_map):
     Shorten the original name for code 4 to "Information not provided by applicant"
 
     :param code_map: the originial code map
-    :return: The updated gender code map
+    :return: The updated Ethnicity code map
     """
     EthnicityMap = code_map['ethnicity'].copy()
     EthnicityMap[3] = 'Unknown'
@@ -52,10 +52,10 @@ def Ethnicity_coding(code_map):
 
 def Generate_Ethnicity_Plots(df, genderMap, parent_path, image_path):
     """
-    Generate Gender Analysis Plots
+    Generate Ethnicity Analysis Plots
 
     :param df: the skimmed data set
-    :param genderMap: the Gender code map
+    :param genderMap: the Ethnicity code map
     :param parent_path: root parent path
     :param image_path: the image path
     """
@@ -63,7 +63,7 @@ def Generate_Ethnicity_Plots(df, genderMap, parent_path, image_path):
         os.makedirs(image_path)
 
     Ethnicity_total=skimmed_df['applicant_ethnicity'].replace(EthnicityMap).value_counts()
-    # Draw Gender composition for All applicants
+    # Draw Ethnicity composition for All applicants
     plt.figure()
     Ethnicity_total = Ethnicity_total.rename(index=EthnicityMap)
     Ethnicity_total.plot.pie(legend=False, title='Ethnicity Composition for All Applicants', autopct='%1.1f%%')
@@ -126,7 +126,7 @@ def Co_vs_Non_co_ethnicity(skimmed_df, genderMap, image_path):
     Analysis for applications with co-applicants vs those without co-applicants
 
     :param skimmed_df: Downscaled data set
-    :param genderMap: code map for gender
+    :param genderMap: code map for Ethnicity
     :param image_path: output path for result graphs
     """
     if not os.path.exists(image_path):
@@ -156,7 +156,7 @@ def Co_vs_Non_co_ethnicity(skimmed_df, genderMap, image_path):
         :param image_path: out put image path
         :param out_path: out put image file name+.png
         :param title: picture title
-        :param EthnicityMap: gender code map
+        :param EthnicityMap: Ethnicity code map
         """
         Ethnicity_result = df[['applicant_ethnicity', 'action_taken']]
         RecodeAction = {1: "Institution approved", 2: "Institution approved", 3: 'Institution denied',
@@ -183,10 +183,10 @@ def Co_vs_Non_co_ethnicity(skimmed_df, genderMap, image_path):
 
     def pivot_value_helper(df, EthnicityMap):
         """
-        get pivot table with gender value counts
+        get pivot table with Ethnicity value counts
 
         :param df: original data frame
-        :return: the pivot table with gender value counts
+        :return: the pivot table with Ethnicity value counts
         """
         Ethnicity_result = df[['applicant_ethnicity', 'action_taken']]
         RecodeAction = {1: "Institution approved", 2: "Institution approved", 3: 'Institution denied',
