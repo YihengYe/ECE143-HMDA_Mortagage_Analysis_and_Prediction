@@ -16,7 +16,7 @@ This is the project made by ECE 143 Group 12 to analyze and predict HMDA Mortage
 - matplotlib 3.5.0
 
 ### CSV Structure:
-    There are several csvs file in the data directory to be used for our analysis. Basically, there are columns which encoding the features into numerical number beginning with 1 in our data set, and thus we leave those columns alone to make an easier analysis:
+- There are several csvs file in the data directory to be used for our analysis. Basically, there are columns which encoding the features into numerical number beginning with 1 in our data set, and thus we leave those columns alone to make an easier analysis:
 - data/raw/hmda_2017_ca_all_records_labels.csv: Our raw data set with all column of features (including corresponding coding columns)
 - data/csvs/hmda_2017_ca_all_records_labels.csv: The same one as the above one. This one is used for analysis purpose
 - data/csvs/hmda_2017_ca_decisions_only.csv: The csvs after first downscale process in DownScale.py. It only contains rows whose column "action_taken" value is in [1,2,3,8,7]. In our EDA process, action [1,2,8] is "approved", and [3,7] is denied.
@@ -24,7 +24,7 @@ This is the project made by ECE 143 Group 12 to analyze and predict HMDA Mortage
 
 
 ### Code, Purpose, and Guideline:
-    First of all, our notebook that represents all our visualization result is "Report.ipynb", which is at the root directory. The notebooks directory is only for our coding process and communication for each individual discoveries.
+- First of all, our notebook that represents all our visualization result is "Report.ipynb", which is at the root directory. The notebooks directory is only for our coding process and communication for each individual discoveries.
 - Report.ipynb: our report for all the visualizations we created in this project. Please keep it in the root directory when running it.
 - src/data_processing/DownScale.py: downscale the raw data into hmda_2017_ca_decisions_only.py and hmda_2017_ca_noname.csv. You can just run it by "python DownScale.py"
 - src/data_processing/code_map.json: code map for numerical code and string column values for different feature. Important for other analysis scripts.
