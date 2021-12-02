@@ -71,6 +71,7 @@ def Generate_Ethnicity_Plots(df, genderMap, parent_path, image_path):
     Ethnicity_total = Ethnicity_total.rename(index=EthnicityMap)
     Ethnicity_total.plot.pie(legend=False, title='Ethnicity Composition for All Applicants', autopct='%1.1f%%')
     plt.savefig(image_path + 'Total_applicant_ethnicity.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     # Making analysis on applicant sex vs approval
@@ -88,6 +89,7 @@ def Generate_Ethnicity_Plots(df, genderMap, parent_path, image_path):
     plt.ylabel('count')
     plt.xticks(rotation=360)
     plt.savefig(image_path + 'Application_result_count_ethnicity.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     totalSA1 = Ethnicity_result_a1.sum(axis=1)
@@ -102,6 +104,7 @@ def Generate_Ethnicity_Plots(df, genderMap, parent_path, image_path):
     plt.ylabel('percentage')
     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.savefig(image_path + 'Application_result_percentage_ethnicity.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     Ethnicity_result_approve = Ethnicity_result_a1['Institution approved'].replace(EthnicityMap).reindex(
@@ -111,6 +114,7 @@ def Generate_Ethnicity_Plots(df, genderMap, parent_path, image_path):
     Ethnicity_result_approve.plot.pie(legend=False, title='Ethnicity Composition for Approved Applicants',
                                       autopct='%1.1f%%')
     plt.savefig(image_path + 'Approved_applicant_Ethnicity.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     Ethnicity_result_approve = Ethnicity_result_a1['Institution denied'].replace(EthnicityMap).reindex(
@@ -120,6 +124,7 @@ def Generate_Ethnicity_Plots(df, genderMap, parent_path, image_path):
     Ethnicity_result_approve.plot.pie(legend=False, title='Ethnicity Composition for Denied Applicants',
                                       autopct='%1.1f%%')
     plt.savefig(image_path + 'Denied_applicant_Ethnicity.png', bbox_inches='tight')
+    plt.show()
     plt.close()
     return
 
@@ -148,6 +153,7 @@ def Co_vs_Non_co_ethnicity(skimmed_df, genderMap, image_path):
         df = df.rename("")
         df.plot.pie(legend=False, title=title, autopct='%1.1f%%')
         plt.savefig(image_path + out_path, bbox_inches='tight')
+        plt.show()
         plt.close()
         return
 
@@ -181,6 +187,7 @@ def Co_vs_Non_co_ethnicity(skimmed_df, genderMap, image_path):
         plt.ylabel('percentage')
         plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
         plt.savefig(image_path + out_path, bbox_inches='tight')
+        plt.show()
         plt.close()
         return
 
@@ -208,6 +215,7 @@ def Co_vs_Non_co_ethnicity(skimmed_df, genderMap, image_path):
     plt.pie([len(Coappli), len(Nonco)], labels=['With co-applicant', 'Without co-applicant'], autopct='%1.1f%%')
     plt.title('Composition for Applications with/without co-applicant')
     plt.savefig(image_path + 'Composition_for_Applications_with_or_without_co-applicant.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     Noncopv = pivot_value_helper(Nonco, EthnicityMap)
@@ -282,6 +290,7 @@ def pair_analysis(skimmed_df, image_path):
     plt.ylabel('count')
     plt.xticks(rotation=45, ha='right')
     plt.savefig(image_path + 'Application_result_count_Pair_Ethnicity.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     totalSA1_pair = Ethnicity_result_a1_pair.sum(axis=1)
@@ -296,6 +305,7 @@ def pair_analysis(skimmed_df, image_path):
     plt.ylabel('percentage')
     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.savefig(image_path + 'Application_result_percentage_Ethnicity_pair.png', bbox_inches='tight')
+    plt.show()
     plt.close()
     return
 
