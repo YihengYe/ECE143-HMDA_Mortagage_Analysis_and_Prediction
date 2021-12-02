@@ -67,6 +67,7 @@ def Generate_Gender_Plots(df,genderMap, parent_path, image_path):
     plt.figure()
     Sex_total.plot.pie(legend=False, title='Gender Composition for All Applicants',autopct='%1.1f%%')
     plt.savefig(image_path+'Total_applicant_gender.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     # Making analysis on applicant sex vs approval 
@@ -81,6 +82,7 @@ def Generate_Gender_Plots(df,genderMap, parent_path, image_path):
     plt.xticks(rotation=45)
     plt.ylabel('count')
     plt.savefig(image_path+'Application_result_count_gender.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     totalSA1=Sex_result_a1.sum(axis=1)
@@ -95,18 +97,21 @@ def Generate_Gender_Plots(df,genderMap, parent_path, image_path):
     plt.ylabel('percentage')
     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.savefig(image_path+'Application_result_percentage_gender.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     Sex_result_approve=Sex_result_a1['Institution approved'].reindex(index=['Male','Female','Unknown'])
     plt.figure() # plot pie chart for approved applicants
     Sex_result_approve.plot.pie(legend=False, title='Gender Composition for Approved Applicants',autopct='%1.1f%%')
     plt.savefig(image_path+'Approved_applicant_gender.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     Sex_result_denied=Sex_result_a1['Institution denied'].reindex(index=['Male','Female','Unknown'])
     plt.figure() #plot pie chart for deniend applicants
     Sex_result_denied.plot.pie(legend=False, title='Gender Composition for Denied Applicants',autopct='%1.1f%%')
     plt.savefig(image_path+'Denied_applicant_gender.png', bbox_inches='tight')
+    plt.show()
     plt.close()
     return
 
@@ -133,6 +138,7 @@ def Co_vs_Non_co_gender(skimmed_df,genderMap,image_path):
         plt.figure()
         df.plot.pie(legend=False, title=title,autopct='%1.1f%%')
         plt.savefig(image_path+out_path, bbox_inches='tight')
+        plt.show()
         plt.close()
         return
     
@@ -164,6 +170,7 @@ def Co_vs_Non_co_gender(skimmed_df,genderMap,image_path):
         plt.ylabel('percentage')
         plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
         plt.savefig(image_path+out_path, bbox_inches='tight')
+        plt.show()
         plt.close()
         return
 
@@ -189,6 +196,7 @@ def Co_vs_Non_co_gender(skimmed_df,genderMap,image_path):
     plt.pie([len(Coappli),len(Nonco)],labels=['With co-applicant', 'Without co-applicant'],autopct='%1.1f%%')
     plt.title('Composition for Applications with/without co-applicant')
     plt.savefig(image_path+'Composition_for_Applications_with_or_without_co-applicant.png',bbox_inches='tight')
+    plt.show()
     plt.close()
 
     
@@ -241,6 +249,7 @@ def pair_analysis(skimmed_df,image_path):
     plt.ylabel('count')
     plt.xticks(rotation=45,ha='right')
     plt.savefig(image_path+'Application_result_count_gender_pair.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     totalSA1_pair=Sex_result_a1_pair.sum(axis=1)
@@ -255,6 +264,7 @@ def pair_analysis(skimmed_df,image_path):
     plt.ylabel('percentage')
     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.savefig(image_path+'Application_result_percentage_gender_pair.png', bbox_inches='tight')
+    plt.show()
     plt.close()
     return
 
