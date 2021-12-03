@@ -45,3 +45,7 @@ Race_analysis.py and Ethnicity_analysis.py. Collaborated in making the presentat
 - Luobin Chen:Participating in choosing data base. Actively discussed EDA analysis contents with teammates and develop visualizations for "income" attribute in income_analysis.py. Collaborated in making the presentation Slide. Group dataset to be good to be visualized. 
 - Zhiyin Liu: Worked on the Naive Bayes Classifier. Worked on creating the presentaion slides with others. Actively discuss with teammates of the prediction model result and issues we have to deal with while working on the classifier.
 
+### References:
+- HMDA data set, https://www.consumerfinance.gov/data-research/hmda/historic-data/
+- Code Explanation for LAR data, https://files.consumerfinance.gov/hmda-historic-data-dictionaries/lar_record_codes.pdf
+
