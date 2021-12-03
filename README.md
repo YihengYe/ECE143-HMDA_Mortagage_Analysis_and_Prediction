@@ -18,7 +18,8 @@ download them manually.
 - sklearn 1.01
 
 ### CSV Structure:
-- There are several csvs file in the data directory to be used for our analysis. Basically, there are columns which encoding the features into numerical number beginning with 1 in our data set, and thus we leave those columns alone to make an easier analysis:
+- There are several csvs file in the data directory to be used for our analysis. Basically, there are columns which encoding the features into numerical number beginning with 1 in our data set, and thus we leave those columns alone to make an easier analysis (The other csvs that not mentioned in this list are mid-point data
+sets that we temporarily used in our analysis process, which are irrevlevant in final results, but we still keep them as a reference):
 - data/raw/hmda_2017_ca_all_records_labels.csv: Our raw data set with all column of features (including corresponding coding columns)。
 - data/csvs/hmda_2017_ca_all_records_labels.csv: The same one as the above one. This one is used for analysis purpose。
 - data/csvs/hmda_2017_ca_noname.csv: Leave only columns with coding values and numerical values for easier and more efficient analysis. It only contains rows whose column "action_taken" value is in [1,2,3,8,7]. In our EDA process, action [1,2,8] is "approved", and [3,7] is denied.
