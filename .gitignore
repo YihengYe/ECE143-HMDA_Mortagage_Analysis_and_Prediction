@@ -132,7 +132,6 @@ dmypy.json
 .pyre/
 
 #data files
-data/
 !/data/cleaned/hmda_2017_ca_all-records_agg_sex.csv
 
 #DS_store
