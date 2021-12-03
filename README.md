@@ -15,6 +15,7 @@ download them manually.
 - pandas 1.3.4
 - numpy 1.21.4
 - matplotlib 3.5.0
+- sklearn 1.01
 
 ### CSV Structure:
 - There are several csvs file in the data directory to be used for our analysis. Basically, there are columns which encoding the features into numerical number beginning with 1 in our data set, and thus we leave those columns alone to make an easier analysis:
