@@ -34,8 +34,16 @@ numerics = ['loan_amount_000s', 'applicant_income_000s', 'population', 'minority
             'hud_median_family_income', 'tract_to_msamd_income', 'number_of_owner_occupied_units',
             'number_of_1_to_4_family_units', 'application_date_indicator', 'rate_spread']
 
+codes = ['as_of_year', 'agency_code', 'loan_type', 'property_type', 'loan_purpose',
+       'owner_occupancy', 'preapproval', 'action_taken', 'msamd', 'state', 'county', 'state_code', 'county_code',
+       'applicant_ethnicity', 'co_applicant_ethnicity', 'applicant_race_1', 'applicant_race_2', 'applicant_race_3',
+       'applicant_race_4', 'applicant_race_5', 'co_applicant_race_1', 'co_applicant_race_2', 'co_applicant_race_3',
+       'co_applicant_race_4', 'co_applicant_race_5', 'applicant_sex', 'co_applicant_sex',
+       'purchaser_type', 'denial_reason_1', 'denial_reason_2', 'denial_reason_3', 'hoepa_status',
+       'lien_status', 'edit_status']
 
-def read_raw_csv_numeric(raw_path, with_dtype=True):
+
+def read_raw_csv_numeric(raw_path, with_dtype=True, numeric_code=False):
     '''
     read raw csv files with numeric lines, and rest as string
     :param with_dtype, whether we use the dtype for read_csv
@@ -47,6 +55,9 @@ def read_raw_csv_numeric(raw_path, with_dtype=True):
     dtypes = dict(zip(raw_columns, ['string'] * len(raw_columns)))
     for num in numerics:
         dtypes[num] = 'float64'
+    if numeric_code:
+        for code in codes:
+            dtypes[code] = 'float64'
     # Here we have to specify the na_values, otherwise it won't transmit to numerical dtypes
     df = pd.read_csv(raw_path, low_memory=False, na_values=' ', dtype=dtypes)
     return df
