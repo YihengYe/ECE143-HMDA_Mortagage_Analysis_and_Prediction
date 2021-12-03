@@ -70,6 +70,7 @@ def Generate_Race_Plots(df, genderMap, parent_path, image_path):
     Race_total = Race_total.rename(index=RaceMap)
     Race_total.plot.pie(legend=False, title='Race Composition for All Applicants', autopct='%1.1f%%')
     plt.savefig(image_path + 'Total_applicant_race.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     # Making analysis on applicant sex vs approval
@@ -85,6 +86,7 @@ def Generate_Race_Plots(df, genderMap, parent_path, image_path):
     plt.ylabel('count')
     plt.xticks(rotation=90)
     plt.savefig(image_path + 'Application_result_count_race.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     totalSA1 = Race_result_a1.sum(axis=1)
@@ -99,6 +101,7 @@ def Generate_Race_Plots(df, genderMap, parent_path, image_path):
     plt.ylabel('percentage')
     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.savefig(image_path + 'Application_result_percentage_race.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     l1 = list(RaceMap.values())
@@ -109,12 +112,14 @@ def Generate_Race_Plots(df, genderMap, parent_path, image_path):
     plt.figure(figsize=(10, 10))
     Race_result_approve.plot.pie(legend=False, title='Race Composition for Approved Applicants', autopct='%1.1f%%')
     plt.savefig(image_path + 'Approved_applicant_race.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     Race_result_approve = Race_result_a1['Institution denied'].replace(RaceMap).reindex(index=Race_l)
     plt.figure(figsize=(10, 10))
     Race_result_approve.plot.pie(legend=False, title='Race Composition for denied Applicants', autopct='%1.1f%%')
     plt.savefig(image_path + 'Denied_applicant_race.png', bbox_inches='tight')
+    plt.show()
     plt.close()
     return
 
@@ -143,6 +148,7 @@ def Co_vs_Non_co_race(skimmed_df, RaceMap, image_path):
         plt.figure(figsize=(10, 10))
         df.plot.pie(legend=False, title=title, autopct='%1.1f%%')
         plt.savefig(image_path + out_path, bbox_inches='tight')
+        plt.show()
         plt.close()
         return
 
@@ -176,6 +182,7 @@ def Co_vs_Non_co_race(skimmed_df, RaceMap, image_path):
         plt.ylabel('percentage')
         plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
         plt.savefig(image_path + out_path, bbox_inches='tight')
+        plt.show()
         plt.close()
         return
 
@@ -207,6 +214,7 @@ def Co_vs_Non_co_race(skimmed_df, RaceMap, image_path):
     plt.pie([len(Coappli), len(Nonco)], labels=['With co-applicant', 'Without co-applicant'], autopct='%1.1f%%')
     plt.title('Composition for Applications with/without co-applicant')
     plt.savefig(image_path + 'Composition_for_Applications_with_or_without_co-applicant.png', bbox_inches='tight')
+    plt.show()
     plt.close()
 
     Noncopv = pivot_value_helper(Nonco, RaceMap)
