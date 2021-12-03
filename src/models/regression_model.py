@@ -1,10 +1,8 @@
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
-from sklearn.model_selection import LeaveOneOut, KFold, train_test_split
 
 import src.data_processing as data
-
 
 features = [# 'loan_type', 'property_type', 'loan_purpose', 'owner_occupancy',
        'loan_amount_000s', 'owner_occupancy','loan_purpose', # 'preapproval', 'action_taken', 'county_code',
@@ -19,14 +17,12 @@ def regularization(x):
     return StandardScaler().fit_transform(x)
 
 
-def train_lr(x, y):
+def train_lr(X_train, X_test, y_train, y_test):
     '''
-    Input x, y for training a logistic regression model
+    Input x, y for training & testing a logistic regression model
     '''
     LR = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial')
-    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.01, random_state=42)
 
-    hit_rate = []
     print("Show train-test split sizes --", "train:", X_train.shape, y_train.shape, "test:", X_test.shape, y_test.shape)
     print("Approved cases ratio --", "train:", sum(y_train) / len(y_train), "test:", sum(y_test) / len(y_test))
     clf = LR.fit(X_train, y_train)
@@ -43,31 +39,13 @@ def train_lr(x, y):
     print("Accuracy = tp+tn/all", hit_rate)
     print("Precision = tp/tp+fp =", prec)
     print("Recall = tp/tp+fn =", recall)
+
+    if len(pred) <= 20:
+        print("Corresponding results:", ["Approved" if x == 1 else "Disapproved" for x in pred])
+
     return {
         "precision": prec,
         "recall": recall,
-        "accuracy": hit_rate
+        "accuracy": hit_rate,
+        "ratio": sum(y_train) / len(y_train)
     }
-
-
-if __name__ == "__main__":
-    new_dropped = data.numeric.read_raw_csv_numeric('./data/cleaned/hmda_2017_ca_all-records_agg_sex.csv',
-                                                    numeric_code=True)
-    features = []
-    for name in feat_df.columns:
-        if feat_df[name].dtype == 'float':
-            print("Numerical feature:", name)
-            f = feature.numeric_feature(feat_df[name], log=True)
-            print(f.shape, f.dtypes)
-            features.append(f)
-        elif name == 'applicant_races':
-            print("Multi-value enumeration feature:", name)
-            f = feature.multi_enumerate_feature(feat_df[name])
-            print(f.shape, f.dtypes)
-            features.append(f)
-        else:
-            print("Enumeration feature:", name)
-            f = feature.enumerate_feature(feat_df[name])
-            print(f.shape, f.dtypes)
-            features.append(f)
-    features = pd.concat(features + [approved], axis=1)
