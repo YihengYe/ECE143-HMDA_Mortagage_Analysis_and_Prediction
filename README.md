@@ -33,3 +33,5 @@ This is the project made by ECE 143 Group 12 to analyze and predict HMDA Mortage
 ### Responsibilities:
 - Yiheng Ye: Set up the directory and managed the coding workflow. Downscaled the data set by writing the DownScale.py Wrote visualizations for gender in Gender_analysis.py. Debugged others' code. Wrote the EDA part in Report.ipynb and parts of Readme documentation including document structure and some code guideline.
 Discussed analysis contents with teammates to organize project structure. Collaborated in making the presentation PPT.
+- Yanzhi Yao: Analyze and visualise the race and ethnicity section. Discussed analysis contents with teammates and help to organize the visualise style. Wrote the Raw_EDA_3_Race analysis.ipynb and Raw_EDA_4_Ethnicity_analysis.ipynb notebook. Modified and reorganized the code of race and ethnicity anaysis into 
+Race_analysis.py and Ethnicity_analysis.py. Collaborated in making the presentation slides.
