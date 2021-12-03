@@ -20,7 +20,7 @@ This is the project made by ECE 143 Group 12 to analyze and predict HMDA Mortage
 - data/raw/hmda_2017_ca_all_records_labels.csv: Our raw data set with all column of features (including corresponding coding columns)。
 - data/csvs/hmda_2017_ca_all_records_labels.csv: The same one as the above one. This one is used for analysis purpose。
 - data/csvs/hmda_2017_ca_noname.csv: Leave only columns with coding values and numerical values for easier and more efficient analysis. It only contains rows whose column "action_taken" value is in [1,2,3,8,7]. In our EDA process, action [1,2,8] is "approved", and [3,7] is denied.
-
+- data/cleaned/hmda_2017_ca_all-records_agg_sex.csv: aggregate code values of applicant_sex & add compacted features like has_applicant, approved etc.
 
 ### Code, Purpose, and Guideline:
 - First of all, our notebook that represents all our visualization result is "Report.ipynb", which is at the root directory. The notebooks directory is only for our coding process and communication for each individual discoveries.
