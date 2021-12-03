@@ -32,8 +32,8 @@ def train_lr(X_train, X_test, y_train, y_test):
     rate_approved = len([1 for t in y_test if t == 1]) / len(y_test)
     rate_disapproved = len([1 for t in y_test if t == 0]) / len(y_test)
     hit_samples = [p for p, q in zip(pred, y_test) if p == q]
-    prec = sum(hit_samples) / len(hit_samples)
-    recall = sum(hit_samples)/len([1 for t in y_test if t == 1])
+    prec = 0 if len(hit_samples) == 0 else sum(hit_samples) / len(hit_samples)
+    recall = 0 if len([1 for t in y_test if t == 1]) == 0 else sum(hit_samples)/ len([1 for t in y_test if t == 1])
     hit_rate = len(hit_samples) / len(y_test)
     print("Positive data proportion:", rate_approved, ",Positive data in correct prediction:", sum(hit_samples) / len(hit_samples))
     print("Accuracy = tp+tn/all", hit_rate)
