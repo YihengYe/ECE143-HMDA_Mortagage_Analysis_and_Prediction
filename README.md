@@ -1,6 +1,7 @@
 # ECE143-HMDA_Mortagage_Analysis_and_Prediction
 
-This is the project made by ECE 143 Group 12 to analyze and predict HMDA Mortage. Please find our result visualizations in Report.ipynb at the root directory and run our code according to the guideline below. Our presentation is ECE143 Group12 Presentation.pdf. Our results visualizations (pngs) are under the result directory。
+This is the project made by ECE 143 Group 12 to analyze and predict HMDA Mortage. Please find our result visualizations in Report.ipynb at the root directory and run our code according to the guideline below. Our presentation is ECE143 Group12 Presentation.pdf. Our results visualizations (pngs) are under the result directory. Our large csv files are store with git lfs, so please install git lfs (type "git lfs install") in your local repository before you try to pull our repository, or you can 
+download them manually.
 
 ### Project Team Members:
 - Yiheng Ye, yiy291@ucsd.edu
